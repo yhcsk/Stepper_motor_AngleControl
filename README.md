@@ -5,7 +5,7 @@ Code is already split into clean modules under `inc/` and `src/`.
 
 Before starting, the platformio IDE in extensions of VScode is needed:
 
-![1760931639624](image/README/1760931639624.png)
+![1760932805789](image/README/1760932805789.png)
 
 And the whole operation environment and code compiling are based on VScode.
 
