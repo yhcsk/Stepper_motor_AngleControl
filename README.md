@@ -98,8 +98,7 @@ Use **Zadig** to set **ST-LINK/V2-1 (Interface 0)** to **WinUSB**. Leave the **V
 - **Upload** in PlatformIO.
 - If you prefer ST’s official flasher, you can use **CubeProgrammer CLI**:
   ```ini
-  upload_protocol = custom
-  upload_command  = "C:\Program Files\STMicroelectronics\STM32Cube\STM32CubeProgrammer\bin\STM32_Programmer_CLI.exe" -c port=SWD -w "$SOURCE" -v -rst
+  upload_protocol = mbed
   ```
 
 ### 4) Serial monitor
@@ -145,6 +144,10 @@ This project doesn’t use a unit test framework; testing is **interactive via U
 
 ### D) Direction test
 
+After uploading the programme to the MCU, you can use the extension of Serial Monitor to communicate with it:
+
+![1760933309692](image/README/1760933309692.png)![1760933324439](image/README/1760933324439.png)
+
 - Send **`+90`** and **`-90`** and confirm opposite motion.
 - If inverted, swap `cw ? GPIO_PIN_SET : GPIO_PIN_RESET` inside `Stepper_SetDir()`.
 
@@ -152,16 +155,3 @@ This project doesn’t use a unit test framework; testing is **interactive via U
 
 - Reduce/increase speed by editing `STEP_PERIOD_US` (smaller = faster).
 - Ensure no missed steps at your desired speed; if needed, slow down or add proper acceleration profiling later.
-
----
-
-## Notes & troubleshooting
-
-- **No motion after typing?**Make sure your serial **Line ending** is **LF** or **CRLF**; the CLI waits for `\n`.
-- **90° moves ~180°** → `MICROSTEPS` mismatch between firmware and TMC2209 hardware.
-- **Upload errors with `stlink`:** close CubeIDE/Programmer; ensure ST-LINK “Debug (Interface 0)” is WinUSB; try another cable/port.
-- **Drag-and-drop (mbed) shows “No space left” or `FAIL.TXT`:** power-cycle USB; delete files (do **not** format); update ST-LINK firmware; or use `stlink`/CubeProgrammer instead.
-
----
-
-## License
