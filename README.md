@@ -165,5 +165,3 @@ This project doesn’t use a unit test framework; testing is **interactive via U
 ---
 
 ## License
-
-Use, modify, and integrate freely within your project. Attribution appreciated.
